@@ -1,22 +1,34 @@
-# Curso de React
-Proyecto de React
+# Curso Básico de React en KadaSoftware
 
-## Pasos
-- Instalar Git
-- Crear .gitignore
-- iniciar proyecto en NODE
+Este proyecto fue creado para el curso de React en KadaSoftware.
 
-### Iniciar proyecto en NODE
-    1. 
-    npm init -y
-    #Se crea archivo package.json
+- [Curso Básico de React en KadaSoftware](#curso-básico-de-react-en-kadasoftware)
+  - [Run Code](#run-code)
+    - [DEV Mode](#dev-mode)
+    - [BUILD Mode](#build-mode)
+    - [Lint Evaluation](#lint-evaluation)
+  - [Commiting your code with Commitizen](#commiting-your-code-with-commitizen)
 
-    Codigo instalación:
-    1.
-    npm install -D @vitejs/plugin-react
-    2. 
-    npm i -D eslint@8.24.0 eslint-config-prettier@8.5.0 eslint-plugin-import@2.26.0 eslint-plugin-jsx-a11y@6.6.1 eslint-plugin-prettier@4.2.1 eslint-plugin-react@7.31.8 eslint-plugin-react-hooks@4.6.0
-    3.
-    npm uninstall @vitejs/plugin-react
-    4.
-    pm install -D husky@8.0.3 prettier@2.7.1 vite@3.1.4
+## Run Code
+
+Once everything installed, you can run:
+
+### DEV Mode
+
+`npm run dev`
+
+In dev mode you can open your navigator in [http://localhost:3000](http://localhost:3000)
+
+### BUILD Mode
+
+`npm run build`
+
+### Lint Evaluation
+
+`npm run lint`
+
+## Commiting your code with Commitizen
+
+Para hacer commit de tus cambios con Commitizen, una vez que hiciste `stage` de tus cambios, puedes correr en tu Terminal el command:
+
+`npx git-cz`
