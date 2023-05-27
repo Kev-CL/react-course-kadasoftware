@@ -1,5 +1,11 @@
 // Dependencies
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+// Components
+import { Pet } from './Pet';
+
+// Custom Hook
+import { useBreedList } from '../hooks/useBreedList';
 
 // Constants
 const ANIMALS = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
@@ -8,7 +14,24 @@ export const SearchParams = () => {
   const [location, setLocation] = useState('');
   const [animal, setAnimal] = useState('');
   const [breed, setBreed] = useState('');
-  const breeds = [];
+  const [pets, setPets] = useState([]);
+  const [breeds] = useBreedList(animal);
+
+  useEffect(() => {
+    requestPets();
+  }, []);
+
+  async function requestPets() {
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+    );
+
+    const json = await res.json();
+
+    setPets(json.pets);
+  }
+
+  console.log('pets: ', pets);
 
   return (
     <div className="search-params">
@@ -57,6 +80,9 @@ export const SearchParams = () => {
           </select>
         </label>
       </form>
+      {pets.map((pet) => (
+        <Pet key={pet.id} name={pet.name} animal={pet.animal} breed={pet.breed} />
+      ))}
     </div>
   );
 };
