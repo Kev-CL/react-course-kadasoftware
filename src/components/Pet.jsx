@@ -1,15 +1,15 @@
 // Dependencies
-import React from "react";
-import {} from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Pet = ({ images, location, id, name, animal, breed }) => {
-  let hero = "http://pets-images.dev-apis.com/pets/none.jpg";
+  let hero = 'http://pets-images.dev-apis.com/pets/none.jpg';
   if (images.length) {
     hero = images[0];
   }
 
   return (
-    <link to={`/details/${id}`} className="pet">
+    <Link to={`/details/${id}`} className="pet">
       <div className="image-container">
         <img src={hero} alt={name} />
       </div>
@@ -17,6 +17,6 @@ export const Pet = ({ images, location, id, name, animal, breed }) => {
         <h1>{name}</h1>
         <h2>{`${animal} - ${breed} - ${location}`}</h2>
       </div>
-    </link>
+    </Link>
   );
 };
