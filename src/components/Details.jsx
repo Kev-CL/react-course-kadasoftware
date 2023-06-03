@@ -1,11 +1,16 @@
 // Dependecies
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { fetchPet } from '../api/fetchPet';
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+
+// API
+import { fetchPet } from "../api/fetchPet";
+
+// Components
+import Carousel from "./Carousel";
 
 export const Details = () => {
   const { id } = useParams();
-  const results = useQuery(['details', id], fetchPet);
+  const results = useQuery(["details", id], fetchPet);
 
   if (results.isLoading) {
     return (
@@ -19,6 +24,7 @@ export const Details = () => {
 
   return (
     <div className="details">
+      <Carousel images={pet.images} />
       <div>
         <h1>{pet.name}</h1>
         <h2>{`${pet.animal} - ${pet.breed} - ${pet.city} - ${pet.state}`}</h2>
