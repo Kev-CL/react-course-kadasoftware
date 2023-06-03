@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 // Components
-import { Pet } from './Pet';
+import { Results } from './Results';
 
 // Custom Hook
 import { useBreedList } from '../hooks/useBreedList';
@@ -19,6 +19,7 @@ export const SearchParams = () => {
 
   useEffect(() => {
     requestPets();
+    /* eslint-disable-next-line */
   }, []);
 
   async function requestPets() {
@@ -31,11 +32,14 @@ export const SearchParams = () => {
     setPets(json.pets);
   }
 
-  console.log('pets: ', pets);
-
   return (
     <div className="search-params">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          requestPets();
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
@@ -79,10 +83,9 @@ export const SearchParams = () => {
             ))}
           </select>
         </label>
+        <button type="submit">Submit</button>
       </form>
-      {pets.map((pet) => (
-        <Pet key={pet.id} name={pet.name} animal={pet.animal} breed={pet.breed} />
-      ))}
+      <Results pets={pets} />
     </div>
   );
 };
